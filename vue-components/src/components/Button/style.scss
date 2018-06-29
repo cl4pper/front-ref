@@ -1,0 +1,15 @@
+@import '../../assets/styles/colors.scss';
+@import '../../assets/styles/sizes.scss';
+
+.button-body {
+
+    .button-light {
+        background-color: $color-light-default;
+        color: $color-dark-default;
+    };
+
+    .button-dark {
+        background-color: $color-dark-default;
+        color: $color-light-default;
+    }
+}
