@@ -25,7 +25,7 @@ export default {
     },
     computed: {
         setBtn: function() {
-            return "btn button-" + this.color;
+            return "btn " + this.color;
         }
     }
 }

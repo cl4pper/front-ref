@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <v-button label="Hello Button" color="dark"></v-button>
+      <v-button label="Hello Button" color="white"></v-button>
   </div>
 </template>
 

@@ -1,15 +1,46 @@
 @import '../../assets/styles/colors.scss';
 @import '../../assets/styles/sizes.scss';
 
-.button-body {
+%button-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: $size-default/2 $size-default/2;
+}
 
-    .button-light {
-        background-color: $color-light-default;
-        color: $color-dark-default;
-    };
+.green {
+    @extend %button-body;
+    background-color: $color-green-default;
+    color: $color-white;
+}
 
-    .button-dark {
-        background-color: $color-dark-default;
-        color: $color-light-default;
-    }
+.red {
+    @extend %button-body;
+    background-color: $color-red-default;
+    color: $color-white;
+}
+
+.blue {
+    @extend %button-body;
+    background-color: $color-blue-default;
+    color: $color-white;
+}
+
+.yellow {
+    @extend %button-body;
+    background-color: $color-yellow-default;
+    color: $color-white;
+}
+
+.black {
+    @extend %button-body;
+    background-color: $color-black;
+    color: $color-white;
+}
+
+.white {
+    @extend %button-body;
+    background-color: $color-white;
+    color: $color-black;
+    border-color: $color-black;
 }
