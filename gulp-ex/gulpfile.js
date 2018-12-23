@@ -1,5 +1,6 @@
 const gulp = require('gulp')
-
+const sass = require('gulp-sass')
+const uglifycss = require('gulp-uglifycss');
 /*
 	-- TOP LEVEL FUNCTIONS --
 	gulp.task - Define tasks
@@ -7,12 +8,26 @@ const gulp = require('gulp')
 	gulp.dest - Point to the folder to output
 	gulp.watch - Watch files and folders to change
 */
+ 
+sass.compiler = require('node-sass');
+ 
+gulp.task('sass', function () {
+	return gulp.src('./src/sass/*.scss')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(gulp.dest('./src/css'));
+});
 
-gulp.task('msg', function() {
-	return console.log('gulp is running..')
-})
+gulp.task('css', function () {
+	gulp.src('./src/css/*.css')
+	  .pipe(uglifycss({
+		"maxLineLen": 50,
+		"uglyComments": true
+	  }))
+	  .pipe(gulp.dest('./dist/'));
+});
 
-gulp.task('copyHTML', function() {
-	gulp.src('src/*.html')
-		.pipe(gulp.dest('dist'))
-})
+
+// SASS WATCHER
+gulp.task('sass:watch', function () {
+	gulp.watch('./src/sass/*.scss', ['sass']);
+});
