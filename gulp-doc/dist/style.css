@@ -1,7 +1,18 @@
+body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.box-title {
+  background: #CF4647;
+  padding: 10px 20px;
+  border-radius: 10px; }
+
 .title {
   font-size: 40px;
-  color: #000;
+  color: #fff;
   font-family: 'Roboto', sans-serif; }
   .title .first-letter {
     font-size: 55px;
-    color: green; }
+    color: #000; }
