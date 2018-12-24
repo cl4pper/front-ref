@@ -1,6 +1,8 @@
 const gulp = require('gulp')
 const { series, watch } = require('gulp') 
 const sass = require('gulp-sass')
+const uglifycss = require('gulp-uglifycss');
+const sync = require('browser-sync')
 
 sass.compiles = require('node-sass')
 
@@ -12,13 +14,13 @@ sass.compiles = require('node-sass')
 	gulp.watch - Watch files and folders to change
 */
 
-// exported task
+// PUBLIC TASK -  referenced at exports
 function defaultTask(cb) {
 	console.log('Hello, Gulp')
 	cb()
 }
 
-// not exported, but still can be used in series
+// PRIVATE TASK -  not exported, but still can be used in series
 function privateTask(cb) {
 	console.log('Hello, Private Gulp')
 	cb()
@@ -28,16 +30,40 @@ function compileSass() {
 	console.log('Compiling sass...')
 	return gulp.src('./src/sass/style.scss')
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('./dist'));
+		.pipe(gulp.dest('./src/css'));
 };
 
-watch('./src/sass/*.scss', function(cb) {
-	console.log('Watching change...')
-	compileSass()
-	cb();
-})
+function uglifyCSS() {
+	console.log('UglifyCSS')
+	gulp.src('./src/css/*.css')
+    	.pipe(uglifycss({
+    		"maxLineLen": 50,
+    		"uglyComments": true
+    	}))
+    	.pipe(gulp.dest('./dist'));
+}
 
-// public tasks
+function openBrowser() {
+	console.log('Opening browser...')
+	sync({
+		server: {
+			baseDir: './src'
+		}
+	})
+
+	console.log('Watching browser...')
+	// watch('./src/index.html', sync.reload)
+}
+
+// watch('./src/sass/*.scss', function(cb) {
+// 	console.log('Watching change...')
+// 	compileSass()
+// 	cb();
+// })
+
 exports.defaultTask = defaultTask
-// private tasks
-exports.default = series(defaultTask, privateTask, compileSass)
+exports.openBrowser = openBrowser
+exports.sass = compileSass
+exports.minify = uglifyCSS
+
+exports.default = series(openBrowser)
