@@ -2,7 +2,10 @@ const gulp = require('gulp')
 const { series, watch } = require('gulp')
 const sass = require('gulp-sass')
 const uglifycss = require('gulp-uglifycss')
-const sync = require('browser-sync')
+const sync = require('browser-sync').create()
+
+const sass_src = './app/scss/main.scss'
+const css_src = './app/css/main.css'
 
 // task to process the sass file into css
 function compileSASS() {
@@ -10,11 +13,14 @@ function compileSASS() {
     return gulp.src('./app/scss/main.scss') // --> where is the file to be worked
         .pipe(sass())
         .pipe(gulp.dest('./app/css/')) // --> compiled file destination
-        .pipe(sync.stream()) //
+        // .pipe(sync.stream())
+        .pipe(sync.reload({
+            stream: true
+        }))
 }
 
 // task to uglify css code
-function uglifyingCSS() {
+function uglifyCSS() {
     console.log('Uglifying code...')
     return gulp.src('./app/css/*.css')
         .pipe(uglifycss({
@@ -25,25 +31,17 @@ function uglifyingCSS() {
 }
 
 // task to open browser when the app starts
-function loadBrowser() {
+function loadApp() {
     console.log('Loading browser...')
-    sync({
+    sync.init({
         server: {
             baseDir: './app'
-        }
+        },
     })
-    console.log('Watching browser...')
 }
 
-// task to watch changes made on html or styles files
-// gulp.task('serve', ['sass'], function() {
-    
-//     sync.init({
-//         server: './'
-//     })
+// watches changes on main.scss file and apply those unto app style
+watch(sass_src, series(compileSASS, uglifyCSS))
 
-//     gulp.watch('./src/styles/index.scss', ['sass'])
-//     gulp.watch('./*.html').on('change', sync.reload)
-// })
-
-exports.default = series(compileSASS, uglifyingCSS, loadBrowser)
+// MAIN FUNCTION
+exports.default = series(compileSASS, uglifyCSS, loadApp)
