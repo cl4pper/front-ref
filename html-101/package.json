@@ -1,0 +1,20 @@
+{
+  "name": "html-101",
+  "version": "1.0.0",
+  "description": "HTML tags explained.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cl4pper@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.11.0"
+  },
+  "dependencies": {
+    "gulp-uglifycss": "^1.1.0"
+  }
+}

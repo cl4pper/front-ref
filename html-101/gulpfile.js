@@ -1,0 +1,5 @@
+const gulp = require('gulp')
+const { series, watch } = require('gulp')
+const sass = require('gulp-sass')
+const uglify = require('gulp-uglifycss')
+const sync = require('browser-sync')
