@@ -53,6 +53,10 @@ function closeApp() {
     sync.exit()
 }
 
+function runTests() {
+    console.log('Running js tests...')
+}
+
 // watches changes on main.scss file and apply those unto app style
 watch(sass_src, series(compileSASS, uglifyCSS))
 watch(html_src, series(reloadApp))

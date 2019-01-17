@@ -1,0 +1,45 @@
+
+.app {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+.app > header {
+  width: 100%;
+  position: relative;
+  top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.app > header .header-text {
+  width: 100%;
+}
+
+.app > header .header-text hr {
+  width: 70%;
+}
+
+.app > header .header-text h2, h3 {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.app .content {
+  padding: 0;
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app > .content ul {
+  list-style: none;
+  padding: 0;
+}
