@@ -4,8 +4,8 @@ const sass = require('gulp-sass')
 const uglifycss = require('gulp-uglifycss')
 const sync = require('browser-sync').create()
 
-const sass_src = './app/scss/main.scss'
-const css_src = './app/css/main.css'
+const sass_src = './app/scss/*.scss'
+const html_src = './app/*.html'
 
 // task to process the sass file into css
 function compileSASS() {
@@ -31,7 +31,7 @@ function uglifyCSS() {
 }
 
 // task to open browser when the app starts
-function loadApp() {
+function startApp() {
     console.log('Loading browser...')
     sync.init({
         server: {
@@ -40,8 +40,22 @@ function loadApp() {
     })
 }
 
+// task to reload server - to be used on watchers
+function reloadApp(done) {
+    console.log('Reloading app...')
+    sync.reload('index.html')
+    done() // -> required to run this function on watcher more than just once
+}
+
+// task to close the server - NOT DONE
+function closeApp() {
+    console.log('Closing app...')
+    sync.exit()
+}
+
 // watches changes on main.scss file and apply those unto app style
 watch(sass_src, series(compileSASS, uglifyCSS))
+watch(html_src, series(reloadApp))
 
 // MAIN FUNCTION
-exports.default = series(compileSASS, uglifyCSS, loadApp)
+exports.default = series(compileSASS, uglifyCSS, startApp)
