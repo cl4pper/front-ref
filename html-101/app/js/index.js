@@ -12,5 +12,13 @@ module.exports = {
 
     getName: function() {
         return this.name
-    }
+    },
+
+    named: function(name) {
+        return 'this.name = name'
+    },
 }
+
+// module.exports = () => {
+//     return 'Hello'
+// }
