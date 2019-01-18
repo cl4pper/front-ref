@@ -19,6 +19,7 @@ class App extends Component {
         this.setState((state) => {
             state.showAges = !state.showAges
             console.log(this.state.showAges)
+            this.forceUpdate()
         })
     }
 
