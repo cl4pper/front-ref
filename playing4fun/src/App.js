@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './components/Person/Person'
 import Person from './components/Person/Person';
@@ -8,9 +7,9 @@ class App extends Component {
 
     state = {
         persons: [
-            { name: 'Matts', age: 28 },
-            { name: 'Dani', age: 28 },
-            { name: 'Nuno', age: 49 }
+            { id: 0, name: 'Matts', age: 28 },
+            { id: 1, name: 'Dani', age: 28 },
+            { id: 2, name: 'Nuno', age: 49 }
         ],
         showAges: true,
         agesStorage: []

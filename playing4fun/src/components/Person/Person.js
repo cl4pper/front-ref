@@ -13,12 +13,15 @@ class Person extends Component {
     render() {
         return (
             <div className="person">
-                <tbody>
-                    <td className="name">
-                        <Name name={ this.props.name }></Name>
-                    </td>
-                    <td className="age">({ this.props.age } years old)</td>
-                </tbody>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td className="name"><Name name={ this.props.name }></Name></td>
+                            <td className="age">({ this.props.age } years old)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
         )
     }
