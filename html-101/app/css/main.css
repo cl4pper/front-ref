@@ -2,11 +2,46 @@ body {
   background: #e5efff;
   margin: 0 auto;
   padding: 0 auto;
-  width: 100%; }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
   body header {
+    width: 80%;
     height: 70px;
-    padding: 0 20px;
+    background: rgba(0, 0, 0, 0.2);
+    font-family: "Courier New", Courier, monospace;
     position: fixed;
-    top: 0;
+    top: 20px;
+    z-index: 10;
     display: flex;
+    justify-content: center;
     align-items: center; }
+    body header h1 {
+      font-size: 48px; }
+  body .cards-list {
+    width: 100%;
+    position: relative;
+    top: 140px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; }
+    body .cards-list .card {
+      width: 550px;
+      height: 275px;
+      background: #fff;
+      z-index: 5;
+      margin: 40px 0;
+      border: 1px solid #000;
+      border-radius: 8px;
+      display: flex; }
+      body .cards-list .card .content-left {
+        width: 60%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column; }
+        body .cards-list .card .content-left h2 {
+          color: #3a86ff; }
+        body .cards-list .card .content-left .text ul {
+          padding: 20px; }
