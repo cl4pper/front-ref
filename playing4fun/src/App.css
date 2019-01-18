@@ -1,17 +1,24 @@
 
+:root {
+  --button--background-normal: #c4c4c4;
+  --button--background-active: #999;
+}
+
+/* HEADER CONFIG */
 .app {
   width: 100%;
   height: 100%;
   margin: 0 auto;
   padding: 0 auto;
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .app > header {
   width: 100%;
-  position: relative;
-  top: 15px;
+  /* position: relative; */
+  margin-top: 15px;
   display: flex;
   align-items: center;
 }
@@ -31,9 +38,28 @@
   justify-content: center;
 }
 
+/* BUTTON CONFIG */
+.app > button {
+  width: 10%;
+  margin: 20px 0;
+  padding: 8px 0;
+  outline: none;
+  border-radius: 8px;
+  background: var(--button--background-normal);
+}
+
+.app > button:active {
+  background: var(--button--background-active);
+  outline: none;
+  position: relative;
+  top: 5px;
+}
+
+
+/* CONTENT AREA CONFIG */
 .app .content {
   padding: 0;
-  margin: 50px;
+  /* margin: 20px; */
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -6,6 +6,23 @@ import Person from './components/Person/Person';
 
 class App extends Component {
 
+    state = {
+        persons: [
+            { name: 'Matts', age: 28 },
+            { name: 'Dani', age: 28 },
+            { name: 'Nuno', age: 49 }
+        ],
+        showAges: true,
+        agesStorage: []
+    }
+
+    changeButton = () => {
+        this.setState((state) => {
+            state.showAges = !state.showAges
+            console.log(this.state.showAges)
+        })
+    }
+
     render() {
         return (
             <div className="app">
@@ -18,14 +35,17 @@ class App extends Component {
                     </div>
                 </header>
 
-                <div className="content">
+                <button onClick={() => this.changeButton()}>{ this.state.showAges ? 'Hide ages' : 'Show Ages' }</button>
+                <p>{ toString(this.state.showAges) }</p>
+
+                <section className="content">
                     {/* LIST OF CONTACTS */}
                     <ul className="contact-list">
-                        <li className="contact"><Person name="Matts" age="25"></Person></li>
-                        <li className="contact"><Person name="Bryan" age="20"></Person></li>
-                        <li className="contact"><Person name="Jose" age="31"></Person></li>
+                        { this.state.persons.map((person) => (
+                            <li className="contact" key={person.id}><Person name={person.name} age={person.age}></Person></li>
+                        ))}
                     </ul>
-                </div>
+                </section>
             </div>
         )
     }
