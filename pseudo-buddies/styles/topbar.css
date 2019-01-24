@@ -1,0 +1,29 @@
+:root {
+    /* topbar config */
+    --topbar--width: 100%;
+    --topbar--height: 100px;
+    --topbar--surface: 10;
+    --topbar--background: rgba(104, 162, 255, 0.5); /* #68a2ff; */
+    --topbar--font-size: 24px;
+}
+
+.topbar {
+    width: var(--topbar--width);
+    height: var(--topbar--height);
+    z-index: var(--topbar--surface);
+    background: var(--topbar--background);
+    font-size: var(--topbar--font-size);
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar header { font-size: 32px; font-weight: bold; }
+
+.topbar header > span { font-size: 48px; text-transform: uppercase }
+
+.topbar > header, p {
+    margin: 0 2%;
+}

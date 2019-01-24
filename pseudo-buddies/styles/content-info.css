@@ -1,0 +1,71 @@
+:root {
+    /* content config */
+    --content--width: 100%;
+    --content--font-color: #fff;
+    --content--margin-top: 150px;
+
+    /* info section config */
+    --info--width: 80%;
+
+    --info--h3-size: 32px;
+
+    --info--p-fontsize: 24px;
+    --info--link-fontsize: 14px;
+
+    --info--link-margin-hor: 10px;
+}
+
+.content {
+    width: var(--content--width);
+    margin-top: var(--content--margin-top);
+    color: var(--content--font-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content > section {
+    width: var(--info--width);
+    border: 1px dashed #fff;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.content section > h3 {
+    font-size: var(--info--h3-size);
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.content section h3 > span {
+    text-transform: uppercase;
+    color: #68a2ff;
+}
+
+.content section > p {
+    margin: 0;
+    padding: 0;
+    font-size: var(--info--p-fontsize);
+}
+
+.content section  p > a {
+    font-size: var(--info--link-fontsize);
+    margin: 0 var(--info--link-margin-hor);
+    color: #fff;
+    text-decoration: none;
+}
+
+.content section  p > a:hover {
+    color: #68a2ff;
+}
+
+.content section > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.content section ul > li {
+    margin: 0 10px;
+}
