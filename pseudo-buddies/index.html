@@ -14,7 +14,7 @@
     </head>
 
     <body>
-        <nav class="topbar">
+        <nav id="navbar" class="topbar">
             <header><span>Pseudo</span> buddies</header>
             <p>a way to improve your css.</p>
         </nav>
@@ -52,5 +52,19 @@
                 </ul>
             </section>
         </div>
+
+        <script>
+            let prevScrollpos = window.pageYOffset;
+            window.onscroll = () => {
+                let currentScrollPos = window.pageYOffset;
+                console.log(currentScrollPos)
+                if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+                } else {
+                document.getElementById("navbar").style.top = "-100px";
+                }
+                prevScrollpos = currentScrollPos;
+            }
+        </script>
     </body>
 </html>
