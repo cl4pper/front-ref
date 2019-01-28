@@ -1,4 +1,5 @@
 import React, { Component } from  'react'
+import { FIREBASE_BASE } from './firebase'
 
 // STYLES
 import './App.scss'

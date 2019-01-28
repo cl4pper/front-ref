@@ -1,17 +1,22 @@
 // import * as firebase from 'firebase'
 import Firebase from 'firebase'
+import Rebase from 're-base'
 
 
-// Initialize Firebase
-const FIREBASE_CONFIG = Firebase.initializeApp ({
-	apiKey: "AIzaSyDv_YzMk3Xf__CC4TdUU1hhrVbJLSPskXo",
-	authDomain: "react-firebase-17d15.firebaseapp.com",
-	databaseURL: "https://react-firebase-17d15.firebaseio.com",
-	projectId: "react-firebase-17d15",
-	storageBucket: "react-firebase-17d15.appspot.com",
-	messagingSenderId: "453015460755"
-})
+// initialize Firebase
+const FIREBASE_CONFIG = {
+	apiKey: process.env.REACT_APP_FIREBASE_KEY,
+	authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
+	databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
+	projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
+}
 // firebase.initializeApp(config);
 
-export const FIREBASE_DB = FIREBASE_CONFIG.database()
-export const databaseRef = FIREBASE_DB.ref('names')
+const FIREBASE_INIT = Firebase.initializeApp(FIREBASE_CONFIG)
+const FIREBASE_BASE = Rebase.createClass(FIREBASE_INIT.database())
+
+// const databaseRef = FIREBASE_DB.ref('names')
+
+export { FIREBASE_BASE }
