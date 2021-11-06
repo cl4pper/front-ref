@@ -1,0 +1,14 @@
+.TextInput {
+    width: 240px;
+    padding: size("sm");
+    margin: 0;
+    color: $color-text-dark;
+    @include fontText("md");
+    border-radius: 4px;
+    border: 1px solid $color-dark;
+    outline: none;
+
+    &:focus {
+        border: 1px solid $color-primary;
+    }
+}

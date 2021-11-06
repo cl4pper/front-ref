@@ -1,0 +1,37 @@
+// FONT FAMILY
+$font-family-Roboto: 'Roboto', sans-serif;
+$font-family-Lato: 'Lato', sans-serif;
+$font-family-Poppins: 'Poppins', sans-serif;
+$font-family-Teko: 'Teko', sans-serif;
+
+@mixin fontText($size: "sm") {
+  font-family: $font-family-Roboto;
+
+  @if $size == "sm" {
+    font-size: 16px;
+  }
+
+  @if $size == "md" {
+    font-size: 24px;
+  }
+
+  @if $size == "lg" {
+    font-size: 32px;
+  }
+}
+
+@mixin fontTitle($size: "sm") {
+  font-family: $font-family-Roboto;
+
+  @if $size == "sm" {
+    font-size: 32px;
+  }
+
+  @if $size == "md" {
+    font-size: 48px;
+  }
+
+  @if $size == "lg" {
+    font-size: 64px;
+  }
+}

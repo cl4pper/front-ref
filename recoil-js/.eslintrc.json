@@ -1,0 +1,21 @@
+{
+	"parser": "babel-eslint",
+	"plugins": ["react"],
+	"env": {
+		"es6": true,
+		"jest": true
+	},
+	"rules": {
+		"semi": ["error", "always"],
+		"quotes": ["error", "single"],
+		"object-curly-newline": [
+			"error",
+			{
+				"ObjectExpression": "always",
+				"ObjectPattern": { "multiline": true },
+				"ImportDeclaration": "never",
+				"ExportDeclaration": "never"
+			}
+		]
+	}
+}

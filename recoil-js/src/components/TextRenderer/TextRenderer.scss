@@ -1,0 +1,13 @@
+.TextRenderer {
+    max-width: 100%;
+    padding: size("sm");
+    margin: 0;
+    text-align: justify;
+    color: $color-text-dark;
+    @include fontText("md");
+    word-wrap: break-word;
+
+    &__noText {
+        @include fontText("sm");
+    }
+}

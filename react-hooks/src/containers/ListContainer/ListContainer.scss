@@ -1,0 +1,26 @@
+.ListContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__list {
+		list-style: none;
+		padding: 0;
+	}
+
+	&__button {
+		min-width: 120px;
+		padding: 8px;
+		margin: 16px 0 64px;
+		font-size: 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+		outline: none;
+		cursor: pointer;
+
+		&:active {
+			position: relative;
+			top: 2px;
+		}
+	}
+}
