@@ -7,3 +7,5 @@ dist
 build
 .vscode
 components
+containers
+pages
