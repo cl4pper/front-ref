@@ -1,4 +1,11 @@
 {
+  "name": "react-setup",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "run:dev": "webpack-dev-server --host 0.0.0.0 --mode development --open",
+    "build": "webpack --config webpack.config.js --mode production"
+  },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
