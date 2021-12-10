@@ -1,5 +1,8 @@
 import React from 'react';
 
+// STYLE
+import './App.css';
+
 const App = () => {
     return (
         <div className="App">
