@@ -1,0 +1,16 @@
+/*
+colors should be used to store every color value used in the project
+- main colors: primary dark/light, secondary dark/light, etc.
+- support colors: dark, light, grey scale
+- components colors: shadows, transparencies, gradients
+
+set color values as hexadecimal and rgb types
+*/
+
+// main
+$color-primary-dark: #0d47a1; // rgb(13, 72, 161)
+$color-primary-light: #42a5f5; // rgb(66, 165, 245)
+
+// support
+$color-dark: #313131; // rgb(49, 49, 49)
+$color-light: #ffffff; // rgb(255, 255, 255)
