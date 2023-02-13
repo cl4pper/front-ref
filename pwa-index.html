@@ -19,11 +19,10 @@
 
       if ('serviceWorker' in navigator) {
         // Unregister service workers.
-        navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((register) => console.log('REGISTER: ', register)));
-        // navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((register) => register.unregister()));
+        navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((register) => register.unregister()));
         
         // Register service worker only on mobile or tablet devices.
-        if(!acceptedDevice) {
+        if(acceptedDevice) {
           // Register a service worker hosted at the root of the site using the default scope.
           navigator.serviceWorker.register('/service-worker.js').then(() => {
           console.log('Service worker registration succeeded.');
