@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky - Nightlab</title>
+    <link rel="stylesheet" href="https://www.sky.com/assets/toolkit-core/v2.39.2/toolkit-core.min.css">
+    <link rel="manifest" href="manifest.json" />
+    <script>window.ENV={config: { BASE_URL: "http://localhost:8081", LOG_URL: "http://127.0.0.1:8081", TOKEN_KEY: "nightlabdev", DEVICE_DESK_TOKEN: "deviceDeskDev", DISABLED: []}}</script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- <script src="./bundle.js"></script> -->
+    <script>
+      const userAgent = window.navigator.userAgent;
+      const supportedDevices = ['Android', 'iPhone', 'iPad']; // others: 'iPod', 'BlackBerry', 'Windows Phone', 'webOS'
+      const acceptedDevice = supportedDevices.some((device) => userAgent.includes(device));
+
+      if ('serviceWorker' in navigator) {
+        // Unregister service workers.
+        navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((register) => console.log('REGISTER: ', register)));
+        // navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((register) => register.unregister()));
+        
+        // Register service worker only on mobile or tablet devices.
+        if(!acceptedDevice) {
+          // Register a service worker hosted at the root of the site using the default scope.
+          navigator.serviceWorker.register('/service-worker.js').then(() => {
+          console.log('Service worker registration succeeded.');
+        }).catch((error) => console.log('Service worker registration failed:', error));
+        }
+      } else {
+        console.log('Service workers are not supported.');
+      }
+    </script>
+  </body>
+</html>
