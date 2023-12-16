@@ -1,0 +1,35 @@
+{
+	"name": "node-postgres",
+	"version": "0.0.1",
+	"description": "A mini server connected to a Postgres database",
+	"main": "server.js",
+	"scripts": {
+		"server": "nodemon server.js",
+		"lint:fix": "prettier --write '**/*.js'",
+		"test": "jest --config ./jest.config.json",
+		"testing": "jest --watchAll --config ./jest.config.json"
+	},
+	"author": "cl4pper@gmail.com",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"jsonwebtoken": "^9.0.2",
+		"module-alias": "^2.2.3",
+		"nodemon": "^3.0.2",
+		"pg": "^8.11.3"
+	},
+	"devDependencies": {
+		"babel-plugin-module-resolver": "^5.0.0",
+		"jest": "^29.7.0",
+		"prettier": "^3.1.1",
+		"supertest": "^6.3.3"
+	},
+	"_moduleAliases": {
+		"@models": "./src/models",
+		"@modules": "./src/modules",
+		"@utils": "./src/utils"
+	}
+}
