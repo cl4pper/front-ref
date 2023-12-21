@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # name the Database service after the $DATABASE_HOST
+  database:
+    container_name: postgres-database
+    image: postgres
+    restart: always
+    env_file: .env
+    environment:
+      - POSTGRES_PASSWORD=$DATABASE_PASSWORD
+      - POSTGRES_USER=$DATABASE_USER
+      - POSTGRES_DB=$DATABASE_NAME
+    volumes:
+      - ./data:/data/postgres
+    ports:
+      - $DATABASE_LOCAL_PORT:$DATABASE_DOCKER_PORT
+
+  server:
+    container_name: node-postgres-api
+    image: node
+    depends_on:
+      database:
+        condition: service_started
+    links:
+      - database
+    environment:
+      - DB_HOST=$DATABASE_HOST
+      - DB_USER=$DATABASE_USER
+      - DB_PASSWORD=$DATABASE_PASSWORD
+      - DB_NAME=$DATABASE_NAME
+      - DB_PORT=$DATABASE_DOCKER_PORT
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+     - .:/usr/server
+    ports:
+      - $SERVER_PORT:$SERVER_PORT

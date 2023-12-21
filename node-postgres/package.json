@@ -4,6 +4,8 @@
 	"description": "A mini server connected to a Postgres database",
 	"main": "server.js",
 	"scripts": {
+		"server:up": "docker-compose up -d",
+		"server:down": "docker-compose down",
 		"server": "nodemon server.js",
 		"lint:fix": "prettier --write '**/*.js'",
 		"test": "jest --config ./jest.config.json",
