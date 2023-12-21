@@ -12,7 +12,7 @@ services:
       - POSTGRES_USER=$DATABASE_USER
       - POSTGRES_DB=$DATABASE_NAME
     volumes:
-      - ./data:/data/postgres
+      - db-volume:/var/lib/postgresql/data
     ports:
       - $DATABASE_LOCAL_PORT:$DATABASE_DOCKER_PORT
 
@@ -37,3 +37,7 @@ services:
      - .:/usr/server
     ports:
       - $SERVER_PORT:$SERVER_PORT
+
+# declares volume to be used above
+volumes:
+  db-volume:
