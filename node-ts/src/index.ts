@@ -1,7 +1,13 @@
-import fs from 'fs';
+import express, { Express, Response, Request } from 'express';
+import { MOCK } from './mock.js';
 
-function getNumber(n: number): void {
-  console.log(n);
-};
+const app: Express = express();
+const PORT: number = 3000;
 
-getNumber(2);
+app.get('/api', (req: Request, res: Response): void => {
+  res.status(200).send(MOCK);
+});
+
+app.listen(PORT, (): void => {
+  console.log(`Server is runnning on port ${PORT}`);
+})
