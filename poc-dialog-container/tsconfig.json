@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "outDir": "build/",
+    "baseUrl": "./",
+    "module": "ES6",
+    "target": "ES5",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "paths": {
+      "@context": [
+        "src/context/index.ts"
+      ],
+      "@styles": [
+        "src/styles/global.scss"
+      ],
+      "@components": [
+        "src/components/index.ts"
+      ],
+      "@containers": [
+        "src/containers/index.ts"
+      ],
+      "@pages": [
+        "src/pages/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
