@@ -10,4 +10,5 @@ while game.get_is_playing():
 
   game.set_many_dices()
   game.set_dice_highest_number()
-  game.roll_dice()
+  for i in range(int(game.get_many_dices())):
+    game.roll_dice()
