@@ -11,16 +11,21 @@ export class UsersController {
     return this.usersService.getAll();
   }
 
+  @Get('/:id')
+  getOne(@Param('id') id: User['id']): Promise<User | undefined> {
+    return this.usersService.getOne(id);
+  }
+
   @Post()
   createUser(
-    @Body('email') email: string,
-    @Body('password') password: string,
+    @Body('email') email: User['email'],
+    @Body('password') password: User['password'],
   ): Promise<User> {
     return this.usersService.create({ email, password });
   }
 
   @Delete('/:id')
-  deleteUser(@Param('id') id: string): Promise<User[]> {
+  deleteUser(@Param('id') id: User['id']): Promise<User[]> {
     return this.usersService.delete(id);
   }
 }

@@ -10,6 +10,10 @@ export class UsersService {
     return await this.users;
   }
 
+  async getOne(id: User['id']): Promise<User | undefined> {
+    return await this.users.find((_) => _.id === id);
+  }
+
   async create(args: CreateUserDTO): Promise<User> {
     const newUser: User = {
       id: uuid(),
@@ -19,7 +23,7 @@ export class UsersService {
     return newUser;
   }
 
-  async delete(id: string): Promise<User[]> {
+  async delete(id: User['id']): Promise<User[]> {
     this.users = this.users.filter((_) => _.id !== id);
     return await this.getAll();
   }
