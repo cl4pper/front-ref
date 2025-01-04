@@ -23,8 +23,7 @@ export class UsersService {
     return newUser;
   }
 
-  async delete(id: User['id']): Promise<User[]> {
+  async delete(id: User['id']): Promise<void> {
     this.users = this.users.filter((_) => _.id !== id);
-    return await this.getAll();
   }
 }
