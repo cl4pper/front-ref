@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from 'src/entities';
 
@@ -12,8 +20,14 @@ export class UsersController {
   }
 
   @Get('/:id')
-  getOne(@Param('id') id: User['id']): Promise<User | undefined> {
-    return this.usersService.getOne(id);
+  getOne(@Param('id') id: User['id']): Promise<User> {
+    try {
+      const user = this.usersService.getOne(id);
+      if (!user) throw Error;
+      return user;
+    } catch {
+      throw Error('User not found.');
+    }
   }
 
   @Post()
@@ -22,6 +36,18 @@ export class UsersController {
     @Body('password') password: User['password'],
   ): Promise<User> {
     return this.usersService.create({ email, password });
+  }
+
+  @Put()
+  updateUser(@Body('user') data: User): Promise<User> {
+    try {
+      const user = this.usersService.getOne(data.id);
+      if (!user) throw Error;
+
+      return this.usersService.update(data);
+    } catch {
+      throw Error('Could not update user.');
+    }
   }
 
   @Delete('/:id')
